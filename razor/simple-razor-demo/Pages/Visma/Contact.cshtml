@@ -1,0 +1,31 @@
+﻿@page
+@model simple_razor_demo.Pages.Visma.ContactModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact</title>
+</head>
+<body>
+
+<h3>If you want to be contacted leave your name and email below</h3>
+
+@using (Html.BeginForm())
+{
+    <label>Your name:</label>
+    @Html.TextBoxFor(model => model.Name)
+    <label>Your email:</label>
+    @Html.TextBoxFor(model => model.Email)
+
+    <button type="submit">Submit</button>
+}
+
+<strong>@Model.Message</strong>
+
+</body>
+</html>

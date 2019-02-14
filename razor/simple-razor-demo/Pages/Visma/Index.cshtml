@@ -1,0 +1,46 @@
+﻿@page
+@model simple_razor_demo.Pages.Visma.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<h1>Hello world!</h1>
+    
+<ul>
+    @{
+        for (var i = 0; i < 10; i++)
+        {
+            <li>@i</li>
+        }
+    }
+</ul>
+
+@{
+    var something = "hello";
+}
+
+<ol>
+    @{
+        foreach(var name in Model.Names)
+        {
+            <li>Name: @name</li>
+        }
+    }
+</ol>
+
+<p>Razor variable "something" is "@something"</p>
+
+@Html.Label("This is a label")
+@Html.TextBox("This is a textbox", "This is textbox value")
+@Html.CheckBox("This is a checkbox")
+
+</body>
+</html>
