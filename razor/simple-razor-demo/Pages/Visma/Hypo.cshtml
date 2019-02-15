@@ -1,0 +1,93 @@
+﻿@page
+@model simple_razor_demo.Pages.Visma.HypoModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hypo</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .input-values {
+            width: 200px;
+            padding: 10px;
+            background-color: lightblue;
+        }
+
+        .history {
+            width: 200px;
+            padding: 10px;
+            background-color: lightgoldenrodyellow;
+        }
+
+        .images {
+            display: inline-block;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate hypotenuse!</h1>
+    
+    @using (Html.BeginForm())
+    {
+        <div class="images">
+            <img src="https://i.imgur.com/owb7XDd.png" width="100">
+            <img src="https://i.imgur.com/DMp3ug2.png" width="200">
+        </div>
+        <div class="input-values">
+            <label>a: </label>
+            @Html.TextBoxFor(model => model.A, new {placeholder = "Enter A value"})
+            <label>b: </label>
+            @Html.TextBoxFor(model => model.B)
+
+            <br>
+            <button type="submit">Calculate</button>
+            <br>
+
+            <strong>@Model.Result</strong>
+        </div>
+        if (Model.History.Count > 0)
+        {
+            <div class="history">
+                <strong>Previous calculations:</strong>
+                <br>
+                <table>
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>Result</th>
+                    </tr>
+
+                    @for (var i = 0; i < Model.History.Count; i++)
+                    {
+                        @Html.HiddenFor(model => model.History[i].A)
+                        @Html.HiddenFor(model => model.History[i].B)
+                        @Html.HiddenFor(model => model.History[i].Result)
+                        <tr>
+                            <td>@Model.History[i].A</td>
+                            <td>@Model.History[i].B</td>
+                            <td>@Model.History[i].Result</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    }
+</body>
+</html>
