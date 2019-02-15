@@ -73,9 +73,10 @@
                         <th>B</th>
                         <th>Result</th>
                     </tr>
-
+                    
                     @for (var i = 0; i < Model.History.Count; i++)
                     {
+                        // Hidden fields to send history back to C#
                         @Html.HiddenFor(model => model.History[i].A)
                         @Html.HiddenFor(model => model.History[i].B)
                         @Html.HiddenFor(model => model.History[i].Result)
