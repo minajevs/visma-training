@@ -28,4 +28,4 @@ Basics of C# and web development including, but not limited to:
 * HTML/CSS
 * JavaScript
 * Razor
-* Unit-tests
+* Unit tests
